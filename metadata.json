@@ -1,0 +1,6 @@
+{
+  "name": "CppApp Studio",
+  "description": "Turn C++ code into interactive mobile apps with live terminal output, prompt-driven input, and instant app building.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
