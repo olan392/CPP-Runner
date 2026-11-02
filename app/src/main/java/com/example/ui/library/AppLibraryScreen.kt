@@ -133,15 +133,30 @@ fun AppLibraryScreen(
                                 }
                             }
 
-                            Button(
-                                onClick = onNewApp,
-                                colors = ButtonDefaults.buttonColors(containerColor = CyanAccent, contentColor = TechNavyBg),
-                                shape = RoundedCornerShape(12.dp),
-                                modifier = Modifier.testTag("create_new_app_button")
-                            ) {
-                                Icon(imageVector = Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
-                                Spacer(modifier = Modifier.width(4.dp))
-                                Text("New App", fontWeight = FontWeight.Bold)
+                            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                Button(
+                                    onClick = {
+                                        viewModel.navigateTo(Screen.ApkBuilder)
+                                    },
+                                    colors = ButtonDefaults.buttonColors(containerColor = CyanAccent, contentColor = TechNavyBg),
+                                    shape = RoundedCornerShape(12.dp),
+                                    modifier = Modifier.testTag("header_build_apk_button")
+                                ) {
+                                    Icon(imageVector = Icons.Default.RocketLaunch, contentDescription = null, modifier = Modifier.size(16.dp))
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text("Build APK", fontWeight = FontWeight.Bold)
+                                }
+
+                                OutlinedButton(
+                                    onClick = onNewApp,
+                                    colors = ButtonDefaults.outlinedButtonColors(contentColor = TextPrimary),
+                                    shape = RoundedCornerShape(12.dp),
+                                    modifier = Modifier.testTag("create_new_app_button")
+                                ) {
+                                    Icon(imageVector = Icons.Default.Add, contentDescription = null, modifier = Modifier.size(16.dp))
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text("Code", fontWeight = FontWeight.Bold)
+                                }
                             }
                         }
 
@@ -433,17 +448,34 @@ fun AppLibraryScreen(
                                 horizontalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
                                 Button(
-                                    onClick = { onLaunchApp(app) },
-                                    colors = ButtonDefaults.buttonColors(containerColor = themeColor, contentColor = TechNavyBg),
+                                    onClick = {
+                                        viewModel.editExistingApp(app)
+                                        viewModel.navigateTo(Screen.ApkBuilder)
+                                    },
+                                    colors = ButtonDefaults.buttonColors(containerColor = CyanAccent, contentColor = TechNavyBg),
                                     shape = RoundedCornerShape(10.dp),
                                     modifier = Modifier
                                         .weight(1f)
                                         .height(44.dp)
+                                        .testTag("build_apk_button_${app.id}")
+                                ) {
+                                    Icon(imageVector = Icons.Default.RocketLaunch, contentDescription = null, modifier = Modifier.size(16.dp))
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text("Build APK", fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                                }
+
+                                Button(
+                                    onClick = { onLaunchApp(app) },
+                                    colors = ButtonDefaults.buttonColors(containerColor = themeColor.copy(alpha = 0.25f), contentColor = themeColor),
+                                    shape = RoundedCornerShape(10.dp),
+                                    modifier = Modifier
+                                        .weight(0.9f)
+                                        .height(44.dp)
                                         .testTag("launch_app_button_${app.id}")
                                 ) {
-                                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = null, modifier = Modifier.size(18.dp))
-                                    Spacer(modifier = Modifier.width(6.dp))
-                                    Text("Launch App", fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = null, modifier = Modifier.size(16.dp))
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text("Run", fontWeight = FontWeight.Bold, fontSize = 12.sp)
                                 }
 
                                 OutlinedButton(
@@ -452,9 +484,7 @@ fun AppLibraryScreen(
                                     colors = ButtonDefaults.outlinedButtonColors(contentColor = TextPrimary),
                                     modifier = Modifier.height(44.dp)
                                 ) {
-                                    Icon(imageVector = Icons.Default.Edit, contentDescription = null, modifier = Modifier.size(16.dp))
-                                    Spacer(modifier = Modifier.width(4.dp))
-                                    Text("Edit Code", fontSize = 13.sp)
+                                    Icon(imageVector = Icons.Default.Edit, contentDescription = null, modifier = Modifier.size(15.dp))
                                 }
                             }
                         }

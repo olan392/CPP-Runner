@@ -168,15 +168,15 @@ fun CppEditorScreen(
 
                         Spacer(modifier = Modifier.width(6.dp))
 
-                        // Build Into App
+                        // Build Into Standalone APK
                         Button(
-                            onClick = { showBuildDialog = true },
+                            onClick = { viewModel.navigateTo(Screen.ApkBuilder) },
                             colors = ButtonDefaults.buttonColors(containerColor = CyanAccent, contentColor = TechNavyBg),
                             modifier = Modifier.height(36.dp).testTag("editor_build_app_button")
                         ) {
                             Icon(imageVector = Icons.Default.RocketLaunch, contentDescription = null, modifier = Modifier.size(16.dp))
                             Spacer(modifier = Modifier.width(4.dp))
-                            Text("Build App", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                            Text("Build APK", fontSize = 12.sp, fontWeight = FontWeight.Bold)
                         }
                     }
                 }

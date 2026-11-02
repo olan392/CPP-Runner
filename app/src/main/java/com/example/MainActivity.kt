@@ -71,5 +71,13 @@ fun AppNavigation(viewModel: MainViewModel) {
                 }
             )
         }
+        is Screen.ApkBuilder -> {
+            com.example.ui.builder.ApkBuildScreen(
+                viewModel = viewModel,
+                onBack = {
+                    viewModel.navigateTo(Screen.Editor)
+                }
+            )
+        }
     }
 }

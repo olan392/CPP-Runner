@@ -33,6 +33,7 @@ sealed interface Screen {
     object Library : Screen
     object Editor : Screen
     object Runner : Screen
+    object ApkBuilder : Screen
 }
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {

@@ -1,0 +1,9 @@
+# CppApp Studio - Built Android APK
+This directory contains the built APK for the C++ App Maker application:
+- CppAppStudio.apk (23 MB standalone installable Android APK)
+- app-debug.apk
+
+Generated at: 2026-11-01
+Build Status: SUCCESS
+Package: com.aistudio.cppappstudio.kxqfza
+Version: 1.0
